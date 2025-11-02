@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestion - Gestion des Habilitations</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Gestion des Employés</h1>
+    <nav>
+      <button onclick="window.location.href='index.html'">🏠 Accueil</button>
+      <button onclick="window.location.href='apercu.html'">📊 Aperçu</button>
+      <button onclick="window.location.href='gestion.html'" class="active">👥 Gestion</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="tab-section active">
+      <form id="employeeForm">
+        <h2>Ajouter / Modifier un Employé</h2>
+
+        <div class="form-grid">
+          <!-- Column 1 -->
+          <div class="form-column">
+            <div class="form-group">
+              <label for="matricule">Matricule *</label>
+              <input type="text" id="matricule" required />
+            </div>
+
+            <div class="form-group">
+              <label for="nom">Nom *</label>
+              <input type="text" id="nom" required />
+            </div>
+
+            <div class="form-group">
+              <label for="prenom">Prénom *</label>
+              <input type="text" id="prenom" required />
+            </div>
+
+            <div class="form-group">
+              <label for="division">Division</label>
+              <select id="division">
+                <option value="XA">XA</option>
+                <option value="XC">XC</option>
+                <option value="XJ">XJ</option>
+                <option value="TQ">TQ</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service</label>
+              <input type="text" id="service" />
+            </div>
+          </div>
+
+          <!-- Column 2 -->
+          <div class="form-column">
+            <div class="form-group">
+              <label for="section">Section</label>
+              <input type="text" id="section" />
+            </div>
+
+            <div class="form-group">
+              <label for="equipe">Équipe</label>
+              <select id="equipe">
+                <option value="Lignes">Lignes</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="fonction">Fonction</label>
+              <input type="text" id="fonction" />
+            </div>
+
+            <div class="form-group">
+              <label for="numeroTitre">N° du Titre</label>
+              <input type="text" id="numeroTitre" />
+            </div>
+          </div>
+
+          <!-- Column 3 -->
+          <div class="form-column">
+            <div class="form-group">
+              <label for="dateValidation">Date Validation</label>
+              <input type="date" id="dateValidation" />
+            </div>
+
+            <div class="form-group">
+              <label for="dateExpiration">Date Expiration</label>
+              <input type="date" id="dateExpiration" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Habilitations - Full width -->
+        <div class="form-group full-width">
+          <label>Habilitations</label>
+          <div id="habilitationsList" class="habilitations-checkboxes">
+            <label><input type="checkbox" value="H0V" /> H0V</label>
+            <label><input type="checkbox" value="B0V" /> B0V</label>
+            <label><input type="checkbox" value="H1V" /> H1V</label>
+            <label><input type="checkbox" value="B1V" /> B1V</label>
+            <label><input type="checkbox" value="H2V" /> H2V</label>
+            <label><input type="checkbox" value="B2V" /> B2V</label>
+            <label><input type="checkbox" value="HC" /> HC</label>
+            <label><input type="checkbox" value="BC" /> BC</label>
+            <label><input type="checkbox" value="BR" /> BR</label>
+            <label><input type="checkbox" value="H1N" /> H1N</label>
+            <label><input type="checkbox" value="H1T" /> H1T</label>
+            <label><input type="checkbox" value="H2N" /> H2N</label>
+            <label><input type="checkbox" value="H2T" /> H2T</label>
+            <label><input type="checkbox" value="SF6" /> SF6</label>
+            <label><input type="checkbox" value="TQ" /> TQ</label>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="submit" class="btn-primary">💾 Ajouter</button>
+          <button type="button" id="clearForm" class="btn-secondary">🗑️ Clear Formulaire</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Modal for confirmations -->
+  <div id="confirmModal" class="modal hidden">
+    <div class="modal-content">
+      <h3>Confirmation</h3>
+      <p id="modalMessage">Êtes-vous sûr de vouloir effectuer cette action ?</p>
+      <div class="modal-actions">
+        <button id="cancelAction" class="btn-secondary">Annuler</button>
+        <button id="confirmAction" class="btn-primary">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="gestion.js"></script>
+</body>
+</html>

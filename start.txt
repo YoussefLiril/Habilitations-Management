@@ -1,0 +1,10 @@
+1-  pwd
+
+2-  cd "C:\Users\Admin\Desktop\Project Habilitations"
+
+3-  cd "C:\Users\Admin\Desktop\Project Habilitations"
+npm install multer
+
+4-  npm list multer
+
+5-  node server.js

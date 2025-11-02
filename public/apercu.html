@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aperçu - Gestion des Habilitations</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Aperçu des Employés</h1>
+      <nav>
+        <button onclick="window.location.href='index.html'">🏠 Accueil</button>
+        <button onclick="window.location.href='apercu.html'" class="active">
+          📊 Aperçu
+        </button>
+        <button onclick="window.location.href='gestion.html'">
+          👥 Gestion
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="tab-section active">
+        <div class="controls">
+          <div class="search-group">
+            <input
+              type="text"
+              id="searchMatricule"
+              placeholder="Rechercher par matricule..."
+            />
+          </div>
+
+          <div class="filter-group">
+            <select id="filterDivision">
+              <option value="">Toutes les divisions</option>
+              <option value="XA">XA</option>
+              <option value="XC">XC</option>
+              <option value="XJ">XJ</option>
+              <option value="TQ">TQ</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <select id="filterEquipe">
+              <option value="">Toutes les équipes</option>
+              <option value="Lignes">Lignes</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <select id="filterHabilitation" multiple>
+              <option value="H0V">H0V</option>
+              <option value="B0V">B0V</option>
+              <option value="H1V">H1V</option>
+              <option value="B1V">B1V</option>
+              <option value="H2V">H2V</option>
+              <option value="B2V">B2V</option>
+              <option value="HC">HC</option>
+              <option value="BC">BC</option>
+              <option value="BR">BR</option>
+              <option value="H1N">H1N</option>
+              <option value="H1T">H1T</option>
+              <option value="H2N">H2N</option>
+              <option value="H2T">H2T</option>
+              <option value="SF6">SF6</option>
+              <option value="TQ">TQ</option>
+            </select>
+            <small>Ctrl+click pour sélection multiple</small>
+          </div>
+
+          <div class="sort-controls">
+            <button id="sortMatricule" data-order="asc">▲ Matricule</button>
+            <button id="sortExpiration" data-order="asc">▲ Expiration</button>
+          </div>
+        </div>
+
+        <div id="employeeCount" class="employee-count">Chargement...</div>
+
+        <table id="employeesTable">
+          <thead>
+            <tr>
+              <th>Matricule</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Division</th>
+              <th>Service</th>
+              <th>Section</th>
+              <th>Équipe</th>
+              <th>Habilitations</th>
+              <th>Date Validation</th>
+              <th>Date Expiration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="10" class="loading-message">
+                Chargement des employés...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Legend Box -->
+        <!-- Legend Box -->
+        <div id="legendBox" class="legend">
+          <h3>Expiration</h3>
+          <!-- CHANGED FROM "Légende Expiration" -->
+          <div class="legend-item" data-color="green">
+            <span class="color"></span> > 6 mois
+          </div>
+          <div class="legend-item" data-color="blue">
+            <span class="color"></span> 6-3 mois
+          </div>
+          <!-- CHANGED FROM yellow to blue -->
+          <div class="legend-item" data-color="orange">
+            <span class="color"></span> 3-1 mois
+          </div>
+          <div class="legend-item" data-color="red">
+            <span class="color"></span> < 1 mois
+          </div>
+          <div class="legend-item" data-color="purple">
+            <span class="color"></span> Expiré
+          </div>
+          <button id="toggleLegend"> Afficher Légende</button>
+          <!-- ADDED EMOJI -->
+        </div>
+      </section>
+    </main>
+
+    <script src="apercu.js"></script>
+  </body>
+</html>
