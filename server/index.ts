@@ -4,7 +4,7 @@ import cors from "cors";
 import multer from "multer";
 import path from "path";
 import { handleDemo } from "./routes/demo";
-import { getDatabase } from "./db";
+import { initializeDatabase } from "./db-pg";
 
 // Initialize database on server creation
 let dbInitialized = false;
@@ -12,7 +12,7 @@ let dbInitialized = false;
 async function initializeDbOnce() {
   if (!dbInitialized) {
     try {
-      await getDatabase();
+      await initializeDatabase();
       dbInitialized = true;
     } catch (err) {
       console.error("Failed to initialize database:", err);
@@ -71,9 +71,9 @@ export function createServer() {
   // Seed database (development only)
   app.post("/api/seed", async (_req, res) => {
     try {
-      await getDatabase(); // Ensure DB is initialized
-      const { seedDatabase } = await import("./seed");
-      await seedDatabase();
+      await initializeDbOnce(); // Ensure DB is initialized
+      const { seedDatabasePG } = await import("./seed-pg");
+      await seedDatabasePG();
       res.json({ message: "Database seeded successfully" });
     } catch (err) {
       console.error("Seeding error:", err);
@@ -89,7 +89,7 @@ export function createServer() {
         return res.status(400).json({ message: "TSV data required" });
       }
 
-      await getDatabase();
+      await initializeDbOnce();
       const { parseEmployeesFromTSV, importEmployees } = await import(
         "./import-employees"
       );
